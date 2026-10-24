@@ -281,7 +281,7 @@ export async function deleteFile(filePath: string, recursive: boolean = false): 
 
     // Perform deletion
     if (stats.isDirectory()) {
-      await fs.promises.rmdir(targetPath, { recursive });
+      await (recursive ? fs.promises.rm(targetPath, { recursive: true }) : fs.promises.rmdir(targetPath));
     } else {
       await fs.promises.unlink(targetPath);
     }

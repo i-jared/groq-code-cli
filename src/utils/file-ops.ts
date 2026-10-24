@@ -48,7 +48,7 @@ export async function deleteFile(filepath: string, force: boolean = false): Prom
     if (stats.isFile()) {
       await fs.promises.unlink(filePath);
     } else if (stats.isDirectory()) {
-      await fs.promises.rmdir(filePath, { recursive: true });
+      await fs.promises.rm(filePath, { recursive: true });
     }
     return true;
   } catch (error: any) {
